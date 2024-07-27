@@ -14,11 +14,13 @@ public class NaverType extends OAuth2ProviderTypes {
 
     @Override
     public String getId() {
-        return (String) getAttributes().get("id");
+        Map<String, Object> response = (Map<String, Object>) getAttributes().get("response");
+        return (String) response.get("email");
     }
 
     @Override
     public String getName() {
-        return (String) getAttributes().get("email");
+        Map<String, Object> response = (Map<String, Object>) getAttributes().get("response");
+        return (String) response.get("name");
     }
 }
