@@ -10,7 +10,11 @@ public enum MemberRole {
     
     ADMIN("ADMIN"),
 
-    MANAGER("MANAGER");
+    MANAGER("MANAGER"),
+
+    GOOGLE("GOOGLE"),
+    KAKAO("KAKAO"),
+    NAVER("NAVER");
 
     private final String role;
 
