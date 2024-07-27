@@ -1,23 +1,28 @@
 package cloud.studyspringsecurity.security.auth;
 
+import cloud.studyspringsecurity.auth.model.ProviderTypes;
 import cloud.studyspringsecurity.member.entity.Member;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 @Getter
 @Builder
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserPrincipal implements UserDetails {
+public class UserPrincipal implements UserDetails , OAuth2User {
 
     private Member member;
+
+    private ProviderTypes providerTypes;
 
     private Collection<? extends GrantedAuthority> authorities;
 
@@ -29,6 +34,16 @@ public class UserPrincipal implements UserDetails {
                 .member(member)
                 .authorities(authorities)
                 .build();
+    }
+
+    @Override
+    public Map<String, Object> getAttributes() {
+        return providerTypes.getAttributes();
+    }
+
+    @Override
+    public String getName() {
+        return providerTypes.getName();
     }
 
     @Override
