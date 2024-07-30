@@ -1,4 +1,4 @@
-package cloud.studyspringsecurity.member.entity;
+package cloud.studyspringsecurity.member.enumeration;
 
 
 import lombok.Getter;
@@ -13,7 +13,9 @@ public enum MemberRole {
     MANAGER("MANAGER"),
 
     GOOGLE("GOOGLE"),
+
     KAKAO("KAKAO"),
+
     NAVER("NAVER");
 
     private final String role;
